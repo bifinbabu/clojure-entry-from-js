@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Feedback - Manoj Kumar A</title>
+</head>
+<body>
+	<style type="text/css">
+		body {
+			margin: 0px;
+			padding: 20px;
+			font-family: sans-serif;
+    		font-size: small;
+		}
+		#header {
+			position: fixed;
+		    background-color: #81C784;
+		    width: 100%;
+		    top: 0px;
+		    left: 0px;
+		    padding-left: 20px;
+		    font-size: 16px;
+		}
+		#chat-history {
+			border: 1px solid #ddd;
+    		padding: 20px;
+    		margin-top: 50px;
+		}
+		.query {
+		    padding: 5px;
+		    border-radius: 4px;
+		    display: inline-block;
+		    margin-bottom: 0px;
+		    color: #666;
+		    margin-top: 0px;
+		    font-style: italic;
+		}
+		.response {
+		    background-color: #cddc392e;
+		    padding: 5px;
+		    border-radius: 4px;
+		    display: inline-block;
+		    margin-bottom: 10px;
+		    margin-left: 20px;
+		    margin-top: 5px;
+		}
+		.input {
+			display: flex;
+		}
+		::placeholder {
+			color: #FF9800;
+			font-size: small;
+			font-style: italic;
+		}
+		textarea {
+			width: 99%;
+			border: 1px solid #FFC107;
+		    background-color: #FFFDE7;
+		    font-size: medium;
+		    padding: 10px;
+		    margin-top: 20px;
+		    outline: none;
+		}
+		button {
+			border-radius: 4px;
+		    border: none;
+		    color: #555;
+		    font-size: small;
+		    padding: 10px;
+		    min-width: 70px;
+		    margin-top: 10px;
+		}
+		.submit-btn {
+			background-color: #8BC34A;
+    		color: white;
+		}
+		.reset-btn {
+			background-color: #FF9800;
+    		color: white;
+		}
+		table {
+			width: 100%;
+		    display: table;
+		    border: 1px solid #ddd;
+		    margin-top: 10px;
+		}
+		tr:nth-child(even) {background-color: #f9f9f9;}
+		.feedbackItemName {
+			width: 20%;
+    		min-width: 300px;
+    		color: #2196F3;
+    		padding: 10px;
+    		font-style: oblique;
+    		vertical-align: top;
+		}
+		.feedbackItemValue {
+    		padding: 10px;
+    		vertical-align: top;
+		}
+		.feedbackTitle {
+			margin-top: 30px;
+			margin-bottom: 0px;
+			color: coral;
+		}
+		.feedbackBy {
+			margin-top: 5px;
+		}
+		.subdued {
+			color: #ccc;
+			font-size: 8px;
+		}
+		.bad-rating {
+			color: #F44336;
+		}
+		.normal-rating {
+			color: black;
+		}
+		.good-rating {
+			color: #4CAF50;
+		}
+	</style>
+	<div id="header">
+		<p>
+			Feedback: <b>Manoj Kumar A</b>
+		</p>
+	</div>
+	<div id="chat-history"></div>
+	<div class="input">
+		<textarea
+			id="response-input"
+			placeholder="Please type your response here and press ctrl + enter, or click on Ok button."
+			onkeyup="responseEvent(event)"></textarea>
+	</div>
+	<div id="feedback"></div>
+	<button class="submit-btn" onclick="processInput()" id="submit-btn">
+		Ok
+	</button>
+	<button class="reset-btn" onclick="reset()">
+		Clear All &amp; Reattempt
+	</button>
+	<script id="query-template" type="text/template">
+		<p class="query">${query}</p>
+	</script>
+	<script id="response-template" type="text/template">
+		<p class="response">${response}</p>
+	</script>
+	<script id="feedback-template" type="text/template">
+		<h3 class="feedbackTitle">Summarised Feedback</h3>
+		<p class="feedbackBy">By ${userName}</p>
+		<table>
+			<tbody>
+				${feedbackItems}
+			</tbody>
+		</table>
+	</script>
+	<script id="feedback-item-template" type="text/template">
+		<tr>
+			<td class="feedbackItemName">${name}</td>
+			<td class="feedbackItemValue">${value}</td>
+		</tr>
+	</script>
+	<script id="rating-bad-template" type="text/template">
+		<span class="bad-rating">${value}</span>
+		<span class="subdued"> / 10</span>
+	</script>
+	<script id="rating-normal-template" type="text/template">
+		<span class="normal-rating">${value}</span>
+		<span class="subdued"> / 10</span>
+	</script>
+	<script id="rating-good-template" type="text/template">
+		<span class="good-rating">${value}</span>
+		<span class="subdued"> / 10</span>
+	</script>
+	<script type="text/javascript" src="dsl.js"></script>
+	<script type="text/javascript" src="main.js"></script>
+</body>
+</html>
